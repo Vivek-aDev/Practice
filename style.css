@@ -7,34 +7,44 @@
 
 /* Body Style */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* Navigation Bar Style */
 nav {
     background-color: #333;
-    padding: 10px 0;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
     list-style-type: none;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 4px;
 }
 
 nav ul li a:hover {
-    color: #ddd;
+    background-color: #555;
+    color: #fff;
 }
