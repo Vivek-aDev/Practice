@@ -71,3 +71,33 @@ th, td {
 th {
     background-color: #f4f4f4;
 }
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions .edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.actions .edit:hover {
+    background-color: #e0a800;
+}
+
+.actions .delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.actions .delete:hover {
+    background-color: #c82333;
+}
