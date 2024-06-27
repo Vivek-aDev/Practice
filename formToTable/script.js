@@ -1,5 +1,8 @@
-document.getElementById('infoForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+const infoForm = document.getElementById('infoForm');
+infoForm.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event) {
+    // event.preventDefault();
 
     const index = document.getElementById('index').value;
     const name = document.getElementById('name').value;
@@ -12,28 +15,28 @@ document.getElementById('infoForm').addEventListener('submit', function(event) {
         updateRow(index, name, email, age);
     }
 
-    document.getElementById('infoForm').reset();
-    document.getElementById('index').value = '';
-});
+    resetForm();
+}
 
 function addRow(name, email, age) {
     const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
     const newRow = table.insertRow();
 
-    const nameCell = newRow.insertCell(0);
-    const emailCell = newRow.insertCell(1);
-    const ageCell = newRow.insertCell(2);
-    const actionsCell = newRow.insertCell(3);
-
-    nameCell.textContent = name;
-    emailCell.textContent = email;
-    ageCell.textContent = age;
-    actionsCell.innerHTML = `
+    newRow.insertCell(0).textContent = name;
+    newRow.insertCell(1).textContent = email;
+    newRow.insertCell(2).textContent = age;
+    newRow.insertCell(3).innerHTML = `
         <div class="actions">
-            <button class="edit" onclick="editRow(this)">Edit</button>
-            <button class="delete" onclick="deleteRow(this)">Delete</button>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
         </div>
     `;
+
+    const editButton = newRow.querySelector('.edit');
+    const deleteButton = newRow.querySelector('.delete');
+
+    editButton.addEventListener('click', () => editRow(newRow));
+    deleteButton.addEventListener('click', () => deleteRow(newRow));
 }
 
 function updateRow(index, name, email, age) {
@@ -45,10 +48,8 @@ function updateRow(index, name, email, age) {
     row.cells[2].textContent = age;
 }
 
-function editRow(button) {
-    const row = button.closest('tr');
+function editRow(row) {
     const index = row.rowIndex - 1;
-
     const name = row.cells[0].textContent;
     const email = row.cells[1].textContent;
     const age = row.cells[2].textContent;
@@ -59,8 +60,12 @@ function editRow(button) {
     document.getElementById('index').value = index;
 }
 
-function deleteRow(button) {
-    const row = button.closest('tr');
+function deleteRow(row) {
     const table = row.closest('tbody');
     table.deleteRow(row.rowIndex - 1);
+}
+
+function resetForm() {
+    infoForm.reset();
+    document.getElementById('index').value = '';
 }
