@@ -2,7 +2,7 @@ const infoForm = document.getElementById('infoForm');
 infoForm.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
-    // event.preventDefault();
+    event.preventDefault();
 
     const index = document.getElementById('index').value;
     const name = document.getElementById('name').value;
